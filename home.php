@@ -26,10 +26,9 @@ $lon = $_SESSION['lon'];
     
 <script>
     var watchId = null;
-    window.onload = geoloc();
-  
+    window.onload = geoloc();  
     function geoloc() {
-
+    
 
     if (navigator.geolocation) {
         var optn = {
@@ -131,7 +130,7 @@ var marker = new google.maps.Marker({
       title : 'Hi , I am here',
             animation : google.maps.Animation.DROP
   });
-
+ 
 }
 </script>
 </head>
