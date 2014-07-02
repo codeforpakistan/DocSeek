@@ -1,4 +1,17 @@
 <!DOCTYPE Html>
+<?php 
+session_start();
+if ($_SESSION== NULL)
+{
+$lat = NULL;
+$lon = NULL;
+}
+else
+{
+$lat = $_SESSION['lat'];
+$lon = $_SESSION['lon'];
+}
+?>
 <html lang="en">
 <head>
 	<title>DOC SEEK</title>
@@ -13,9 +26,11 @@
     
 <script>
     var watchId = null;
-    
-
+    window.onload = geoloc();
+  
     function geoloc() {
+
+
     if (navigator.geolocation) {
         var optn = {
                 enableHighAccuracy : true,
@@ -35,7 +50,7 @@ function showPosition(position) {
         var googlePos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         
         var mapOptions = {
-            zoom : 17,
+            zoom : 14,
             center : googlePos,
             mapTypeId : google.maps.MapTypeId.ROADMAP
         };
@@ -70,7 +85,7 @@ function showPosition(position) {
                 }
             });
          document.getElementById("id1").value=googlePos;
-        //window.location.href="hina_search.php?latlon=" + googlePos;
+       // window.location.href="try_doc.php?latlon=" + googlePos;
             }
             
             function stopWatch() {
@@ -98,13 +113,30 @@ function showPosition(position) {
         break;
         }
         }
-     
-        </script>
-       
+function initialize()
+{
+  var button1= document.getElementById("id2");
+      button1.click();
+   var googlePos=new google.maps.LatLng(<?php echo $lat[0]; ?>,<?php echo $lon[0]; ?>);
+var mapProp = {
+  
+  center:googlePos,
+  zoom:14,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("mapdiv"),mapProp);
+var marker = new google.maps.Marker({
+      position: googlePos,
+      map: map,
+      title : 'Hi , I am here',
+            animation : google.maps.Animation.DROP
+  });
 
+}
+</script>
 </head>
 
-<body onload="geoloc()" id="page-top" data-spy="scroll" data-target=".navbar-inverse">
+<body  id="page-top" data-spy="scroll" data-target=".navbar-inverse">
 	<p id = "mapdiv"></p>
 	
 	<div class="container">
@@ -117,11 +149,18 @@ function showPosition(position) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <div class=" col-xs-5 col-sm-1 col-md-1 col-lg-1">
+                  <div class='row'>
+                  <div class=" col-xs-2 col-sm-1 col-md-1 col-lg-1">
                    <img src="DocSeek.jpg" class="img-thumbnail"></div>
-                   <div class=" col-xs-2 col-sm-3">
+                   <div class=" col-xs-1 col-sm-3">
                      <a class="navbar-brand" href="#page-top">
-                     <h1><b><i>DOC SEEK</i></b></h1></a>
+                     <h1>DOC SEEK</h1></a>
+                  </div>
+                  <div class='col-xs- 2 col-sm-3'>
+                       <form action="doc_search.php" method="post">
+                         <input type="text" name="alpha" class="form-control" placeholder="search a nearby hospital....">
+                     </form>
+            
                   </div>
              <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
@@ -142,23 +181,30 @@ function showPosition(position) {
             </div>
         </div>
     </div>
-    
+    </div>
       </nav>
-    <div class="field"> 
-     <br><br><br><br><br><br><br>
-       <form action="doc_search.php" method="post">
+    <div class="field">
+        <form action='try_doc.php' method='post'>
+          <input type="hidden" name="id1" id="id1">
+          <p id="mapedit">
+        <button id="id2" type ="submit" name="Nearest" onclick="initialize()" class="btn btn-primary btn-right">Nearest Hopitals</button>
+        </p>
+        </form>
+     
+       <!-- <form action="doc_search.php" method="post">
          <div class="col-md-2"></div>
          <div class= "col-md-8">
-        <!--<div class="input-group ">-->
-         <input type="text" name="alpha" class="form-control" placeholder="search a nearby hospital....">
-        <!--<span class=" input-group-addon glyphicon glyphicon-search white"></span></div>-->
+        <!<div class="input-group ">-->
+        <!--  <input type="text" name="alpha" class="form-control" placeholder="search a nearby hospital....">
+        <span class=" input-group-addon glyphicon glyphicon-search white"></span></div>
             </div>
          <div class="col-md-2">
             <button type="submit" name="submit" class="btn btn-primary ">search</button>
          </div>
          <input type="hidden" name="id1" id="id1"> 
-        </form>
+        </form> --> 
     </div>
+   
     </div>
     <section id="about" class="container content-section text-center">
         <div class="row">

@@ -35,7 +35,7 @@ h3{color:white;}
 input[type="text"]{border-color: black;}
 .field{
     position:relative;
-    top:-400px;
+    top:-600px;
     width:100%;
        
 }
@@ -61,6 +61,8 @@ input[type="text"]{border-color: black;}
 #contact h2{color:#D64541;}
 
 .col-sm-1{padding-top: 5px;}
+.col-xs-1 h1{font-size: 20px;}
+.col-sm-3 h1{font-size: 30px;}
 
 .btn-primary{background-color:#D64541;opacity:0.9;}
 
@@ -81,3 +83,4 @@ input[type="text"]{border-color: black;}
 .btn-lg-my:hover,
 .btn-lg-my:active,
 .btn-lg-my:focus{color:#D64541;}
+.btn-right{float:right;}

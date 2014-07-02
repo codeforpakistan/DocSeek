@@ -180,33 +180,35 @@
                   $distance=0;
 
                   $distance= calculate_distance($lat,$lon,$lat2,$lon2);
-                  if ($distance <=10)
+                  if ($distance <=5)
                   {
                     
-                     $res[]=array($distance,$row['Facility_Name']);
+                     $F_Name=array($row['Facility_Name']);
+                     $latpass=array($row['lat']);
+                     $lonpass=array($row['lon']);
                   }
                   else
                     continue;
-
-
                 }
               
-                 echo "<br><br><br><br><br><br>";
-                 asort($res);
-                 foreach ($res as $key => $value) {
-                   # code...
-                   echo "<div class='container'>";
-                   echo "<div class='col-sm-2'></div>";
-                   echo "<div class='col-sm-1'><img src='DocSeek.jpg' class='img-thumbnail'></div>";
-                   echo "<div class='col-sm-6 lg-link'>";
-                   echo "<form action='Doctor.php' method='post'>";
-                  echo "<button tyep='submit' name='hospital' class='btn btn-lg btn-lg-my'>$value[1]</button>"."<br><br>";
-                  echo "<input type='hidden' name='hosp' value='$value[1]'>";
-                  echo "</form>";
-                  echo "</div>";
-                  echo "<div class='col-sm-3'></div>";
-                  echo "</div>";
-                 }
+                 // echo "<br><br><br><br><br><br>";
+                 // asort($res);
+                 // foreach ($res as $key => $value) {
+                 //   # code...
+                 //   echo "<div class='container'>";
+                 //   echo "<div class='col-sm-2'></div>";
+                 //   echo "<div class='col-sm-1'><img src='DocSeek.jpg' class='img-thumbnail'></div>";
+                 //   echo "<div class='col-sm-6 lg-link'>";
+                 //   echo "<form action='Doctor.php' method='post'>";
+                 //  echo "<button tyep='submit' name='hospital' class='btn btn-lg btn-lg-my'>$value[1]</button>"."<br><br>";
+                 //  echo "<input type='hidden' name='hosp' value='$value[1]'>";
+                 //  echo "</form>";
+                 //  echo "</div>";
+                 //  echo "<div class='col-sm-3'></div>";
+                 //  echo "</div>";
+                 // }
+                session_start();
+                $_SESSION['latpass']=$latpass;
               }   
          }
           function calculate_distance($latfrom,$lonfrom,$latTo,$lonTo)
