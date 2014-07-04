@@ -1,155 +1,50 @@
 <!DOCTYPE Html>
-<?php
-session_start();
-if ($_SESSION== NULL)
-{
-	$lat = NULL;
-	$lon = NULL;
-}
-else
-{
-	$lat = $_SESSION['lat'];
-	$lon = $_SESSION['lon'];
-}
-?>
+<!--<?php
+// session_start();
+// if ($_SESSION== NULL)
+// {
+// 	$lat = NULL;
+// 	$lon = NULL;
+// }
+// else
+// {
+// 	$lat = $_SESSION['lat'];
+// 	$lon = $_SESSION['lon'];
+// }
+?>-->
 <html lang="en">
 <head>
 	<title>DOC SEEK</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/grayscal.css">
+	<!--<link rel="stylesheet" href="css/grayscale.css">-->
 	<link rel="stylesheet" href="doc.css">
 	<script  src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdreDurlXrqiP61Cu6P4yaZch1pKtAyw &sensor=true"></script>
-<<<<<<< HEAD
-    
-<script>
-    var watchId = null;
-    window.onload = geoloc();  
-    function geoloc() {
-    
-
-    if (navigator.geolocation) {
-        var optn = {
-                enableHighAccuracy : true,
-                timeout : Infinity,
-                maximumAge : 0
-        };
-        
-    watchId = navigator.geolocation.watchPosition(showPosition, showError, optn);
-    
-
-    } else {
-            alert('Geolocation is not supported in your browser');
-    }
-    }
- 
-function showPosition(position) { 
-        var googlePos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        
-        var mapOptions = {
-            zoom : 14,
-            center : googlePos,
-            mapTypeId : google.maps.MapTypeId.ROADMAP
-        };
-        var mapObj = document.getElementById('mapdiv');
-        var googleMap = new google.maps.Map(mapObj, mapOptions);
-        var markerOpt = {
-            map : googleMap,
-            position : googlePos,
-            title : 'Hi , I am here',
-            animation : google.maps.Animation.DROP
-        };
-        var googleMarker = new google.maps.Marker(markerOpt);
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-            'latLng' : googlePos
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    var popOpts = {
-                        content : results[1].formatted_address,
-                        position : googlePos
-                    };
-                var popup = new google.maps.InfoWindow(popOpts);
-                google.maps.event.addListener(googleMarker, 'click', function() {
-                popup.open(googleMap);
-            });
-                } else {
-                    alert('No results found');
-                }
-                } else {
-                    alert('Geocoder failed due to: ' + status);
-                }
-            });
-         document.getElementById("id1").value=googlePos;
-       // window.location.href="try_doc.php?latlon=" + googlePos;
-            }
-            
-            function stopWatch() {
-                if (watchId) {
-                    navigator.geolocation.clearWatch(watchId);
-                    watchId = null;
- 
-                }
-            }
- 
-        function showError(error) {
-        var err = document.getElementById('mapdiv');
-        switch(error.code) {
-        case error.PERMISSION_DENIED:
-        err.innerHTML = "User denied the request for Geolocation."
-        break;
-        case error.POSITION_UNAVAILABLE:
-        err.innerHTML = "Location information is unavailable."
-        break;
-        case error.TIMEOUT:
-        err.innerHTML = "The request to get user location timed out."
-        break;
-        case error.UNKNOWN_ERROR:
-        err.innerHTML = "An unknown error occurred."
-        break;
-        }
-        }
-function initialize()
-{
-  var button1= document.getElementById("id2");
-      button1.click();
-   var googlePos=new google.maps.LatLng(<?php echo $lat[0]; ?>,<?php echo $lon[0]; ?>);
-var mapProp = {
-  
-  center:googlePos,
-  zoom:14,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("mapdiv"),mapProp);
-var marker = new google.maps.Marker({
-      position: googlePos,
-      map: map,
-      title : 'Hi , I am here',
-            animation : google.maps.Animation.DROP
-  });
- 
-}
-</script>
-=======
 
 	<script>
 	$(document).ready(function(){
 
 		$('#getNearby').click(function (e) {
 			e.preventDefault();
-			alert('hello');
+			var id1 = $('#id1').val();
+           $.ajax({
+           	type : "POST",
+           	datatype : "json",
+           	data : id1,
+           	url : "try_doc.php",
+           	success: function(data){
+           		console.log(data);
+           	}
+           });
+			//$.post("try_doc.php", $("#formid").serialize());
+			//alert('hello');
 		});
-	
 	})
-
-
 	var watchId = null;
-	window.onload = geoloc();
-
+    window.onload = geoloc();
 	function geoloc() {
 
 
@@ -235,101 +130,55 @@ var marker = new google.maps.Marker({
 			break;
 		}
 	}
-	function initialize(event)
-	{
-		// event.preventDefault();
-		// var button1= document.getElementById("id2");
-		// button1.click();
-		// var googlePos=new google.maps.LatLng();
-		// var mapProp = {
-		//
-		// 	center:googlePos,
-		// 	zoom:14,
-		// 	mapTypeId:google.maps.MapTypeId.ROADMAP
-		// };
-		// var map=new google.maps.Map(document.getElementById("mapdiv"),mapProp);
-		// var marker = new google.maps.Marker({
-		// 	position: googlePos,
-		// 	map: map,
-		// 	title : 'Hi , I am here',
-		// 	animation : google.maps.Animation.DROP
-		// });
-		// return false;
-	}
 	</script>
->>>>>>> cae8d9f20292e1a295f33f2d02923ef7b688711c
+
 </head>
 
-<body  id="page-top" data-spy="scroll" data-target=".navbar-inverse">
+<body  id="page-top" data-spy="scroll" data-target=".navbar-default">
 	<p id = "mapdiv"></p>
 
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
-			<div class="container">
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class='row'>
-						<div class=" col-xs-2 col-sm-1 col-md-1 col-lg-1">
-							<img src="DocSeek.jpg" class="img-thumbnail"></div>
-							<div class=" col-xs-1 col-sm-3">
-								<a class="navbar-brand" href="#page-top">
-									<h1>DOC SEEK</h1></a>
-								</div>
-								<div class='col-xs- 2 col-sm-3'>
-									<form action="doc_search.php" method="post">
-										<input type="text" name="alpha" class="form-control" placeholder="search a nearby hospital....">
-									</form>
-
-								</div>
-								<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-									<ul class="nav navbar-nav">
-										<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-										<li class="hidden">
-											<a href="#page-top"></a>
-										</li>
-										<li class="page-scroll">
-											<a href="#about"><h3>About</h3></a>
-										</li>
-										<li class="page-scroll">
-											<a href="#download"><h3>Download</h3></a>
-										</li>
-										<li class="page-scroll">
-											<a href="#contact"><h3>Team..</h3></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</nav>
-				<div class="field">
-					<form action='try_doc.php' method='post'>
-						<input type="hidden" name="id1" id="id1">
-						<p id="mapedit">
-							<!-- <button id="getNearby" name="Nearest" class="btn btn-primary btn-right">Nearest Hopitals</button> -->
-							<a href="#" id="getNearby" class="btn btn-primary btn-right">Nearest Hospitals</a>
-						</p>
-					</form>
-
-					<!-- <form action="doc_search.php" method="post">
-					<div class="col-md-2"></div>
-					<div class= "col-md-8">
-					<!<div class="input-group ">-->
-					<!--  <input type="text" name="alpha" class="form-control" placeholder="search a nearby hospital....">
-					<span class=" input-group-addon glyphicon glyphicon-search white"></span></div>
-				</div>
-				<div class="col-md-2">
-				<button type="submit" name="submit" class="btn btn-primary ">search</button>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+            <div class="navbar-header page-scroll">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main-collapse">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="#page-top">DOC SEEK</a>
 			</div>
-			<input type="hidden" name="id1" id="id1">
-		</form> -->
+			<div class="collapse navbar-collapse" id="navbar-main-collapse">
+                <form action="doc_search.php" method="post" class="navbar-form navbar-left" role="search">
+                 <div class="form-group">
+                 <input type="text" name="alpha" class="form-control" placeholder="search....">
+                 </div>
+               </form>
+               <ul class="nav navbar-nav navbar-right">
+	               	<li class="hidden">
+					    <a href="#page-top"></a>
+				    </li>
+					<li class="page-scroll">
+						<a href="#about">About</a>
+					</li>
+					<li class="page-scroll">
+						<a href="#download">Download</a>
+					</li>
+					<li class="page-scroll">
+						<a href="#contact">Team..</a>
+					</li>
+				</ul>		
+		</div>
 	</div>
-
+	</nav>
+	<div class="field">
+		<form action='try_doc.php' method='post' id="formid">
+		<input type="hidden" name="id1" id="id1">
+		</form>
+		<!-- <button id="getNearby" name="Nearest" class="btn btn-primary btn-right">Nearest Hopitals</button> -->
+		<a href="#" id="getNearby" class="btn btn-inverse btn-inverse-my"><span class='glyphicon glyphicon-map-marker white'></span>Nearest Hospitals</a>
+	</div>
 </div>
 <section id="about" class="container content-section text-center">
 	<div class="row">

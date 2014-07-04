@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
   <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/grayscal.css">
+    <link rel="stylesheet" href="css/grayscale.css">
     <link rel="stylesheet" href="doc.css">
   <script  src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
