@@ -1,4 +1,5 @@
- <?php
+<?php
+header('Content-Type: application/json; charset=UTF-8');
   //session_start();
  $conn= mysql_connect('localhost','root','');
  if(!$conn)
@@ -17,7 +18,6 @@ if(!$sel)
     $res = explode(" ", $val);
     $lat = urlencode($res[1]);
     $lon = urlencode($res[3]);
-    $res =array();
     $latpass=array();
     $lonpass=array();
     while ($row = mysql_fetch_array($entry))
@@ -27,30 +27,23 @@ if(!$sel)
       $latlon2="$lat2".","."$lon2";
       $distance=0;
       $distance= calculate_distance($lat,$lon,$lat2,$lon2);
-      if ($distance <=10){
-                       //$res = array($distance,$latlon2);
+      if ($distance <=10){ 
         $latpass[]=$row['lat'];
-        $lonpass[]=$row['lon']; 
+        $lonpass[]=$row['lon'];
+        $res=array($latpass,$lonpass) ;
       }
       else
         continue;
     }
-    
-    $data= $latpass.",".$lonpass;
-    echo json_encode($data);
-  
-    // $_SESSION['lat']=$latpass;
-     //$_SESSION['lon']=$lonpass;
-    // header('location:home.php');
 
   function calculate_distance($latfrom,$lonfrom,$latTo,$lonTo)
   {
     $R=6372.795477598;;
     $b=pi()/180;
-    $o1=deg2rad(floatval($latfrom));
+    $o1=deg2rad($latfrom);
     $o2=deg2rad($latTo);
     $o=deg2rad($latfrom-$latTo);
-    $lam=deg2rad(floatval($lonfrom)-$lonTo);
+    $lam=deg2rad($lonfrom-$lonTo);
     $angle = 2 * asin(sqrt(pow(sin($o / 2), 2) +
      cos($o1) * cos($o2) * pow(sin($lam / 2), 2)));
     $d = $R*$angle;
@@ -70,5 +63,7 @@ if(!$sel)
       return $d;
     }
   }
+$response=$res;
+  echo json_encode ($response);
   mysql_close($conn);
   ?>

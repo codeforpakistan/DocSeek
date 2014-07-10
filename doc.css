@@ -1,6 +1,6 @@
 .fixed-top{position:fixed;top:0px;}@media(min-width:768px){.fixed-top{width:750px}}@media(min-width:992px){.fixed-top{width:970px}}@media(min-width:1200px){.fixed-top{width:1140px}}
 /*.page-header-fixed{ margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px; padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;position:fixed;color:#ffffff;background-color:#e74c3c;border-color:#e74c3c}@media(min-width: 768px){.page-header-fixed{width:750px;}}@media(min-width: 992px){.page-header-fixed{width:970px;}}@media(min-width: 1200px){.page-header-fixed{width:1140px;}}
-*/.white{background-color: #efe8e4;font-size: 40px;}
+*/.white{background-color: #efe8e4;font-size:50px; color:#d9534f;}
 
 .panel-primary>.panel-heading{color:#ffffff;background-color:#e74c3c;border-color:#e74c3c}
 h2,.h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300;line-height:1.1;color:#ffffff}
@@ -10,8 +10,9 @@ h2,.h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300;l
      url('fonts/glyphicons-halflings-regular.woff') format('woff'),  
      url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), 
      url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg'); }.glyphicon{top:0px;}
+     .glyp-search{background-color: white;border-color: white; color: black;}
 body { padding-top:40px;}
-input[type="text"]{border-color: black;}
+input[type="text"]{border-color: white;}
 
  #mapdiv {
         
@@ -31,7 +32,7 @@ input[type="text"]{border-color: black;}
 p{color:black;
 font-size: 20px}
 
-.navbar-default{color:white;background-color:black}
+.navbar-default{color:white;background-color:black;}
 h1{color:white;}
 h3{color:white;}
 input[type="text"]{border-color: black;}
@@ -104,6 +105,7 @@ input[type="text"]{border-color: black;}
 .navbar-default .navbar-toggle:focus {
   background-color:white ;
 }
+ 
 .img-my{padding-right: 5px;}
 .lg-link a { font-size:25px;}
 .btn-lg-my{color:#D64541;}
@@ -114,3 +116,4 @@ input[type="text"]{border-color: black;}
 .btn-inverse-my:hover,
 .btn-inverse-my:focus,
 .btn-inverse-my:active{color:#D64541};
+

@@ -26,7 +26,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
   <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/grayscal.css">
+    <link rel="stylesheet" href="css/grayscale.css">
     <link rel="stylesheet" href="doc.css">
   <script  src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -59,36 +59,35 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </head>
   <body  id="page-top" data-spy="scroll" data-target=".navbar-inverse">
     <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
-        <div class="container">
-           <div class="navbar-header page-scroll">
-                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <div class=" col-xs-3 col-sm-1 col-md-1 col-lg-1">
-                   <img src="DocSeek.jpg" class="img-thumbnail"></div>
-                   <div class="col-sm-3">
-                     <a class="navbar-brand" href="#page-top">
-                     <h1><b><i>DOC SEEK</i></b></h1></a>
-                  </div>
-             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="page-scroll">
-                        <a href="home.php"><h3>Back</h3></a>
-                    </li>
-                    </ul>
-                </div>
-             </div>
-        </div>    
-    </nav>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#page-top">DOC SEEK</a>
+      </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li class="page-scroll">
+            <a href="home.php">Back</a>
+           </li>
+          </ul>
+         </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <div class="well " style="height:500px ;padding-top:40px;">
     <div class='col-lg-6'>
-    <br><br><br><br>
     <p><?php echo $v1; ?></p></div>
     <div class='col-lg-6'>
       <p id = "smallmap"></p>
+    </div>
+  </div>
 </div>
 </div>
 </body>
