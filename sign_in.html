@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!-- META TAGS -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Title -->
+<title>Doc Seek</title>
+<!-- Font CSS Link -->
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<!-- Font CSS Link -->
+<!-- Start CSS Link -->
+<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css">
+<link type="text/css" rel="stylesheet" href="assets/css/graha-pink.css">
+<link type="text/css" id="main-style" rel="stylesheet" href="#">
+<link type="text/css" rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/jquery-ui.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/palette_switcher.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/toggles.css" type="text/css" media="screen"/>
+<!-- End CSS Link -->
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+
+    $('#signin').click(function (e) {
+      e.preventDefault();
+      $.post("php/sign_in.php", $("#formid").serialize(),function(response){
+      	if(response!="Please Fill out the Fields."){
+        window.location.href="index.html?user=" + response;
+        }
+        else{
+        	alert(response);
+        }
+      });
+     return false;
+    });
+    
+  })
+</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53604114-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<!--Menu wrapper Start-->
+<div id="menu-wrapper">
+		<div class="container">
+			<div class="menu-container">
+				<div class="top-menu navbar">
+					<div class="navbar-inner">
+						<div class="moblogo visible-phone visible-tablet">
+							<a href="#"><img src="assets/img/docseek_logo.png" alt="logo"></a>
+						</div>
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</a>
+						<ul class="nav nav-collapse collapse">
+							<li><a href="index.html" id="aindexS">Doc Seek</a>
+                            </li>
+							<li><a href="features.html" id="afeaturesS">features</a>
+							</li>
+							<li>
+							<div class="home-logo">
+								<div>
+									<a href="index.html" id="alogoS"><img src="assets/img/docseek_logo.png" alt="logo"></a>
+								</div>
+							</div>
+							</li>
+							<li><a href="contact.html" id="acontactS">contact</a></li>
+							<li><a href="sign_in.html" id="asign_inS">sing in</a></li>
+							<li><a href="#" id="agetuser"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--Menu wrapper End-->
+
+<div id="content-wrapper">
+	<!--Home content start-->
+	<div class="container">
+		<div id="single-content">
+			<div class="row">
+				<div class="span8">
+					<div class="heading-area">
+						<h2>Sign In</h2>
+					</div>
+					<div class="single-wrapper clearfix">
+						<form class="list-form" action="php/sign_in.php" method="post" id="formid" >
+							<label>Email :</label>
+							<input class="span7" type="text" name="email" required>
+							<label>Password :</label>
+							<input class="span7" type="text" name="pass" required>
+							<div class="form-bt">
+								<input type="submit" id="signin" value="SignIn" class="btn btn-main ctr">
+							</div>
+							<label style="text-align:right;padding-right:30px;">OR</label>
+							<div class="form-bt">
+								<input type="submit" value="CREATE NEW ACCOUNT" class="btn btn-inverse ctr" data-toggle="modal" data-target="#myModal">
+							</div>
+						</form>
+					</div>
+				</div>
+			
+				<div class="span4">
+					<div class="contact-agents clearfix">
+						<h2>Contact us</h2>
+						<div class="contact-agents-data">
+							<!-- <div class="phone">
+								+55 90000
+							</div> -->
+							
+							<h4>Contact address</h4>
+							<div class="name">
+								1st floor KPITBoard,
+							</div>
+							<div class="name">
+								Deans Trade center Peshawar.
+							</div>
+							<div class="email">
+								<a href="mailto:hina@labandroid.com">hina@labandroid.com</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Home content end-->
+</div>
+	<!-- Modal -->
+	
+			<div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+			      </div>
+			      <div class="modal-body">
+			        <table class="table">
+			          <tr>
+			            <td style="border:none">
+			        <form class="form-horizontal" role="form" style="text-align:center" action="doctor_sign_up.html">
+			      <button type="submit" class="btn btn-main btn-md">Doctor Account</button>
+			    </form>
+			  </td></tr>
+			  <tr>
+			    <td style="border:none">
+			     <form class="form-horizontal" role="form" style="text-align:center" action="user_sign_up.html">
+			      <button type="submit" class="btn btn-inverse btn-md">USER ACCOUNT</button>
+			    </form>
+			    </td></tr>
+			    </table> 
+			      </div>
+			    </div>
+			  </div>
+			</div>
+<!-- Modal end -->
+<section>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br><br><br><br><br>
+	</section>
+<!--Footer   area   start-->
+<div class="footer-wrapper clearfix">
+	<div class="container">
+		<div class="row">
+			<div class="span10">
+				<div class="footer">
+					 &copy; 2014 DocSeekapp.com | All rights reserved.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+			
+<!-- Start JS Link -->
+<script src="assets/js/modernizr.js"></script>
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOgBOH5a6C5rWkb9Sb2Q3IpVJD7DUiQ&amp;sensor=false"></script>
+<script type="text/javascript" src="assets/js/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="assets/js/gmap3.min.js"></script>
+<script type="text/javascript" src="assets/js/gmap3.clusterer.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
+<script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="assets/js/switcher.js"></script>
+<script defer src="assets/js/jquery.prettyPhoto.js"></script>
+<script defer src="assets/js/jquery.flexslider.js"></script>
+<script defer src="assets/js/custom.js"></script>
+<script defer src="assets/js/toggles.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/jquery.panorama.js"></script>
+<script type="text/javascript" src="assets/js/url_parser.js"></script>
+<script>$('#widget').draggable();</script>
+<!-- End JS Link -->
+
+</body>
+</html>

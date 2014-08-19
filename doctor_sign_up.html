@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!-- META TAGS -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Title -->
+<title>Doc Seek</title>
+<!-- Font CSS Link -->
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<!-- Font CSS Link -->
+<!-- Start CSS Link -->
+<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css">
+<link type="text/css" rel="stylesheet" href="assets/css/graha-pink.css">
+<link type="text/css" id="main-style" rel="stylesheet" href="#">
+<link type="text/css" rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/jquery-ui.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/palette_switcher.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="assets/css/toggles.css" type="text/css" media="screen"/>
+<!-- End CSS Link -->
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+
+    $('#dsubmit').click(function (e) {
+     e.preventDefault();
+      $.post("php/doctor_signup.php", $('#dform').serialize(),function(confirm){
+       $('#adoctor').text(confirm);
+       $('#dreset').click(function (e){
+        window.location.href="doctor_sign_up.html";
+       });
+      });
+     return false;
+    });
+    
+  })
+</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53604114-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+<!--Menu wrapper Start-->
+<div id="menu-wrapper">
+		<div class="container">
+			<div class="menu-container">
+				<div class="top-menu navbar">
+					<div class="navbar-inner">
+						<div class="moblogo visible-phone visible-tablet">
+							<a href="#"><img src="assets/img/docseek_logo.png" alt="logo"></a>
+						</div>
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</a>
+						<ul class="nav nav-collapse collapse">
+							<li><a href="index.html">Doc Seek</a>
+                            </li>
+							<li><a href="features.html">features</a>
+							</li>
+							<li>
+							<div class="home-logo">
+								<div>
+									<a href="index.html"><img src="assets/img/docseek_logo.png" alt="logo"></a>
+								</div>
+							</div>
+							</li>
+							<li><a href="contact.html">contact</a></li>
+							<li><a href="sign_in.html">sing in</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--Menu wrapper End-->
+
+<div id="content-wrapper">
+	<!--Home content start-->
+	<div class="container">
+		<div id="single-content">
+			<div class="row">
+				<div class="span8">
+					<div class="heading-area">
+						<h2>Doctor Sign Up</h2>
+					</div>
+					<div class="single-wrapper clearfix">
+						<form class="list-form" action="php/doctor_signup.php" method="post" id="dform" >
+							<a href="#" id="adoctor"></a>
+							<br>
+							<label>Full Name :</label>
+							<input class="span7" type="text" name="name" required>
+							<label>PMDC No :</label>
+							<input class="span7" type="text" name="pmdcno" required>
+							<label>Email :</label>
+							<input class="span7" type="text" name="email" required>
+							<label>Password :</label>
+							<input class="span7" type="text" name="pass" required>
+							<label>Hospital Name:</label>
+							<input class="span7" type="text" name="hospitalname" required>
+							<label>Specialized In:</label>
+							<select class="span7" name="specialist" required>
+								<option value=""></option>
+		                         <option value="Anaesthetist">Anaesthetist</option>
+		                         <option value="Biotechnologist">Biotechnologist</option>
+		                         <option value="Cardiologist">Cardiologist</option>
+		                         <option value="Chest Specialist">Chest Specialist</option>
+		                         <option value="Children Specialist">Children Specialist</option>
+		                         <option value="Dental Surgeon">Dental Surgeon</option>
+		                         <option value="Dermatologist">Dermatologist</option>
+		                         <option value="E.N.T Specialist">E.N.T Specialist</option>
+		                         <option value="Epidemiologist">Epidemiologist</option>
+		                         <option value="Eye Specialist">Eye Specialist</option>
+		                         <option value="Gynaecologist">Gynaecologist</option>
+		                         <option value="Medical Specialist">Medical Specialist</option>
+		                         <option value="Microbiologist">Microbiologist</option>
+		                         <option value="Neuro Surgeon">Neuro Surgeon</option>
+		                         <option value="Nutritionist">Nutritionist</option>
+		                         <option value="Oral & Maxillofacial Surgeon">Oral & Maxillofacial Surgeon</option>
+		                         <option value="Orthopaedic Specialist">Orthopaedic Specialist</option>
+		                         <option value="Orthopaedic Surgeon">Orthopaedic Surgeon</option>
+		                         <option value="Paediatrician">Paediatrician</option>
+		                         <option value="Pathologist">Pathologist</option>
+		                         <option value="Pharmacist">Pharmacist</option>
+		                         <option value="Physician">Physician</option>
+		                         <option value="Physiotherapist">Physiotherapist</option>
+		                         <option value="Psychiatrist">Psychiatrist</option>
+		                         <option value="Radiologist">Radiologist</option>
+		                         <option value="Skin Specialist">Skin Specialist</option>
+		                         <option value="Specialist">Specialist</option>
+		                         <option value="Surgeon">Surgeon</option>
+		                         <option value="Surgical Specialist">Surgical Specialist</option>
+		                         <option value="T.B Specialist">T.B Specialist</option>
+		                         <option value="Trauma Surgeon">Trauma Surgeon</option>
+							</select>
+							<label>Contact No:</label>
+							<input class="span7" type="text" name="contactNum" required>
+							<label>Working Hours:</label>
+							<select class="span7" name="workingHours_from" required>
+								<option value="">From</option>
+                                <option value="9AM">9AM</option>
+                                <option value="10AM">10AM</option>
+                                <option value="11AM">11AM</option>
+                                <option value="12PM">12PM</option>
+                                <option value="1PM">1PM</option>
+                                <option value="2PM">2PM</option>
+							</select>
+							<br><br>
+							<select class="span7" name="workingHours_to" reqiured>
+								<option value="">To</option>
+		                        <option value="12PM">12PM</option>
+		                        <option value="1PM">1PM</option>
+		                        <option value="2PM">2PM</option>
+		                        <option value="3PM">3PM</option>
+		                        <option value="4PM">4PM</option>
+		                        <option value="5PM">5PM</option>
+							</select>
+							<label>Contact Time:</label>
+							<select class="span7" name="contactHours_day" required>
+								<option value="">Day</option>
+			                    <option value="Monday">Monday</option>
+			                    <option value="Tuesday">Tuesday</option>
+			                    <option value="Wednesday">Wednesday</option>
+			                    <option value="Thursday">Thursday</option>
+			                    <option value="Friday">Friday</option>
+			                    <option value="Saturday">Saturday</option>
+			                    <option value="Sunday">Sunday</option>
+							</select>
+							<br><br>
+							<select class="span7" name="contactHours_time" reqiured>
+								<option value="">Time</option>
+                                <option value="9AM">9AM</option>
+                                <option value="10AM">10AM</option>
+                                <option value="11AM">11AM</option>
+                                <option value="12PM">12PM</option>
+                                <option value="1PM">1PM</option>
+                                <option value="2PM">2PM</option>
+                                <option value="3PM">3PM</option>
+                                <option value="4PM">4PM</option>
+                                <option value="5PM">5PM</option>
+							</select>
+							<label>Gender :</label>
+							<div class="span7">
+							<input type="radio" name="gender" style="width:20px;height:1em;font-size:20px" value="male" checked><font style="font-size:15px">Male</font></input>
+							<input type="radio" name="gender" style="width:20px;height:1em;font-size:20px" value="female" required><font style="font-size:15px">Female</font></input>
+						    </div><br>
+							<div class="form-bt">
+								<input type="reset" id="dreset" value="Reset" class="btn btn-main ctr">
+								<input type="submit" id="dsubmit" value="Create account" class="btn btn-main ctr">
+							</div>
+						</form>
+					</div>
+				</div>
+			
+				<div class="span4">
+					<div class="contact-agents clearfix">
+						<h2>Contact us</h2>
+						<div class="contact-agents-data">
+							<h4>Contact address</h4>
+							<div class="name">
+								1st floor KPITBoard,
+							</div>
+							<div class="name">
+								Deans Trade center Peshawar.
+							</div>
+							<div class="email">
+								<a href="mailto:hina@labandroid.com">hina@labandroid.com</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Home content end-->
+</div>
+	
+<!--Footer   area   start-->
+<div class="footer-wrapper clearfix">
+	<div class="container">
+		<div class="row">
+			<div class="span10">
+				<div class="footer">
+					  &copy; 2014 DocSeek.com | All rights reserved.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+			
+<!-- Start JS Link -->
+<script src="assets/js/modernizr.js"></script>
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC_aOgBOH5a6C5rWkb9Sb2Q3IpVJD7DUiQ&amp;sensor=false"></script>
+<script type="text/javascript" src="assets/js/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="assets/js/gmap3.min.js"></script>
+<script type="text/javascript" src="assets/js/gmap3.clusterer.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
+<script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="assets/js/switcher.js"></script>
+<script defer src="assets/js/jquery.prettyPhoto.js"></script>
+<script defer src="assets/js/jquery.flexslider.js"></script>
+<script defer src="assets/js/custom.js"></script>
+<script defer src="assets/js/toggles.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/jquery.panorama.js"></script>
+<script>$('#widget').draggable();</script>
+<!-- End JS Link -->
+
+</body>
+</html>
