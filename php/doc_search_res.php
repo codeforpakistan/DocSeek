@@ -186,9 +186,10 @@ session_destroy();
 $(document).ready(function(){
 	var user = "<?php echo $username;?>";
 	
-    $('#asignp').text("sign out");
+    
 	if(user)
 	{
+		$('#asignp').text("sign out");
 		var index= "../index.html?user="+user;
 		var features= "../features.html?user="+user;
 		var contact= "../contact.html?user="+user;

@@ -1,9 +1,5 @@
 <?php
-session_start();
-// $hostName = "mysql.serversfree.com";
-// $userName = "u274841067_kpit";
-// $password = "omer123456";
-// $dbName = "u274841067_kpit";
+session_start();;
 
  $conn= mysql_connect('localhost','root','');
  if(!$conn)
@@ -12,7 +8,8 @@ session_start();
  $sel = mysql_select_db('kpit',$conn);
  if(!$sel)
    die("failed to select:".mysql_error());
-
+ 
+    $username = $_POST['getuser'];
 	$var1=explode(" ",$_POST['alpha']);
 	$var=arraycase($var1);
 	$hosp =NULL;
@@ -35,7 +32,7 @@ session_start();
 	           }
 	       }
 	   }
-	   $username= $_POST['getuser'];
+	  
      $res = array();
 	if ($hosp == NULL)
 	{
@@ -55,8 +52,9 @@ session_start();
 	    }
 	    
 	}
-mysql_close($conn);
-$_SESSION['username']= $username;
 
-header('location:hosp_search_res.php');
+$_SESSION['username']= $username;
+echo $username;
+//header('location:hosp_search_res.php');
+mysql_close($conn);
 ?>

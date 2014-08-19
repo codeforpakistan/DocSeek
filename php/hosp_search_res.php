@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['result']) && isset($_SESSION['username']))
+if(isset($_SESSION['result']))
 {
 	$result = $_SESSION['result'];
 	$username = $_SESSION['username'];
@@ -61,17 +61,20 @@ session_destroy();
 						<span class="icon-bar"></span>
 						</a>
 						<ul class="nav nav-collapse collapse">
-							<li><a href="index.html">Doc Seek</a>
+							<li><a href="..\index.html" id="aindexh">Doc Seek</a>
                             </li>
+                            <li><a href="..\features.html" id="afeath">features</a>
+							</li>
 							<li>
 							<div class="home-logo">
 								<div>
-									<a href="index.html"><img src="..\assets/img/docseek_logo.png" alt="logo"></a>
+									<a href="..\index.html" id="alogoh"><img src="..\assets/img/docseek_logo.png" alt="logo"></a>
 								</div>
 							</div>
 							</li>
-							<li><a href="sign_in.html">sing in</a></li>
-                            <li><a href="#"><?php echo $username; ?></a></li>
+							<li><a href="..\contact.html" id="acontacth">contact</a></li>
+							<li><a href="..\sign_in.html" id="asignh">sing in</a></li>
+							<li><a href="#" id="auserh"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -166,6 +169,40 @@ session_destroy();
 <script src="..\assets/js/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="..\assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="..\assets/js/jquery.panorama.js"></script>
+<script type="text/javascript" src="..\assets/js/url_parser.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var user = "<?php echo $username;?>";
+	
+    
+	if(user)
+	{
+		$('#asignh').text("sign out");
+		var index= "../index.html?user="+user;
+		var features= "../features.html?user="+user;
+		var contact= "../contact.html?user="+user;
+		var indexchange = "../index.html";
+		var featchange = "../features.html";
+		var contchange ="../contact.html";
+		$('#auserh').text(user);
+		$('#aindexh').attr("href",index);
+		$('#afeath').attr("href",features);
+		$('#acontacth').attr("href",contact);
+		$('#alogoh').attr("href",index);
+		$('#asignh').click(function (e){
+		  e.preventDefault();
+         $('#asignh').text("sign in");
+         $('#asignh').attr("href","#");
+         $('#auserh').html(null);
+         $('#aindexh').attr("href",indexchange);
+		$('#afeath').attr("href",featchange);
+		$('#acontacth').attr("href",contchange);
+		$('#alogoh').attr("href",indexchange);
+		});
+    }
+})
+
+</script>
 <script>$('#widget').draggable();</script>
 <!-- End JS Link -->
 </body>

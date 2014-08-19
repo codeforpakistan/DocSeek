@@ -27,7 +27,28 @@
 
 <!-- End CSS Link -->
 <script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript">
+	var watchId = null;
+    window.onload = geoloc();
+	function geoloc() {
 
+
+		if (navigator.geolocation) {
+			var optn = {
+				enableHighAccuracy : true,
+				timeout : Infinity,
+				maximumAge : 0
+			};
+
+			watchId = navigator.geolocation.watchPosition(showPosition);
+
+		} 
+	}
+function showPosition(position) {
+		var googlePos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		document.getElementById("id1").value=googlePos;
+	}
+</script>
 <script>
 $(document).ready(function(){
 
@@ -111,62 +132,21 @@ $(document).ready(function(){
 					<h2>Search a Doctor</h2>
 					<div id="search-area">
 						<div class="search-wrapper">
-							<form style="text-align:center" action="php/doc_search.php" method="post">
+							<br><br><br><br>
+							<form style="text-align:center" action="php/near_doctor.php" method="post">
 									<input type="text" class="span7"  name="alpha" placeholder="e.g. Cardiologist" required>
+									<input type="hidden" id="id1" name="id1">
 									<input type="hidden" id="getusername" name="getuser">
 									<div class="search-button">
 										<button class=" btn btn-main ctr" style="margin:0 auto; width:140px;">Doctors</button>
 									</div>
 							</form>
+							<br><br>
 						</div>
 					</div>
-					<h2>Search a Hospital</h2>
-					<div id="search-area">
-						<div class="search-wrapper">
-							<form style="text-align:center" action="php/hosp_search.php" method="post">
-									<input type="text" class="span7"  name="alpha" placeholder="e.g. peshawar hospitals" required>
-									<input type="hidden" id="getusername" name="getuser">
-									<div class="search-button">
-										<button class=" btn btn-main ctr" style="margin:0 auto; width:140px;">Hospitals</button>
-									</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="span4">
-					<h2>Features</h2>
-					<a href="features.html"><img src="assets/img/App_features.jpg"></a>
-				</div>
-			</div>
-		</div>
-	</div>
-		<!--Bottom  widget  start-->
-		<div class="bottom-content">
-			<div class="container">
-				<div class="row">
-					<div class="span4 latestnews">
-						<h2>Latest News</h2>
-						<ul>
-							<li><a>Doc Seek Web app is going to be live on Internet.</a></li>
-							<li><a>Doc Seek facilitate Doctors to create account.</a></li>
-							<li><a>Create simple Account to share your experience with the Doctor.</a></li>
-						</ul>
-						<!-- <a href="#">More News</a> -->
-					</div>
-					<div class="span4 newsletter">
-						<h2>Get Notification</h2>
-						<p>
-							 Get a free notifications about DOC SEEK Web & Mobile App.
-						</p>
-						<form action="php/notification.php" method="POST" id="notific_form">
-						<input type="text" name="email" placeholder="Enter your email" required>
-						<div class="clearfix">
-						</div>
-						<div class="form-act">
-							<input type="submit" id="getnotific" class="btn btn-main " value="Get">
-						</div></form>
-					</div>
-					<div class="span4 contact">
+					<br><br>
+					<div class="single-wrapper clearfix">
+					<div class="span6 contact" style="padding-left:10px">
 						<h2>Contact Us</h2>
 						<div class="name">
 								1st floor KPITBoard,
@@ -177,22 +157,24 @@ $(document).ready(function(){
 						<div class="email">
 								<a href="mailto:hina@labandroid.com">hina@labandroid.com</a>
 							</div>
-						<!-- <div class="phone-number">
-							 <a href="tel:8877 776 554">8877 776 554</a>
-						</div> -->
 						<div class="social">
 							<ul class="menu nav">
 								<li class="scoialt"><a href="http://www.facebook.com/docseek?ref=br_tf" target="_blank" class="facebook"></a></li>
-								<!-- <li class="scoialt"><a href="http://www.twitter.com/" target="_blank" class="twitter"></a></li> -->
 								<li class="scoialt"><a href="https://github.com/codeforpakistan/DocSeek" target="_blank" class="github"></a></li>
 								
 							</ul>
 						</div>
 					</div>
 				</div>
+				</div>
+				<div class="span4">
+					<h2>Features</h2>
+					<a href="features.html"><img src="assets/img/App_features.jpg"></a>
+				</div>
 			</div>
 		</div>
-		<!--Bottom  widget  End-->
+	</div>
+		
 		<!--Home content end-->
 	</div>
 	<!--Footer   area   start-->

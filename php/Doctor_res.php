@@ -239,9 +239,10 @@ session_destroy();
 <script type="text/javascript">
 $(document).ready(function(){
 	var user = "<?php echo $username;?>";
-    $('#asignpd').text("sign out");
+    
 	if(user)
 	{
+		$('#asignpd').text("sign out");
 		var index= "../index.html?user="+user;
 		var features= "../features.html?user="+user;
 		var contact= "../contact.html?user="+user;

@@ -37,12 +37,16 @@ function arraycase(array $var1)
   $newarray = unserialize(strtolower(serialize($var1)));
   return $newarray;
 }
-if($var[1]==NULL)
+for($i=0;$i<sizeof($var);$i=$i+1)
 {
-  $val = $var[0];
-}
-else{
-$val = $var[0]." ".$var[1];
+  if($i>0)
+  {
+    $val = $var[0]." ".$var[1];
+  }
+  else
+  {
+    $val= $var[$i];
+  }
 }
 $type = array("anaesthetist","biotechnologist","cardiologist","chest specialist","children specialist","dental surgeon","dermatologist","e.n.t specialist","epidemiologist","eye specialist","gynaecologist","medical specialist","microbiologist","neuro surgeon","nutritionist","oral & maxillofacial surgeon",
                 "orthopaedic specialist","orthopaedic surgeon","paediatrician","pathologist","pharmacist","physician","physiotherapist","psychiatrist","radiologist","skin specialist","specialist","surgeon","surgical specialist","t.b specialist","trauma surgeon");
