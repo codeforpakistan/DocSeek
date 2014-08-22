@@ -1,13 +1,16 @@
 <?php
 session_start();
-if(isset($_SESSION['type'])&& isset($_SESSION['id'] )&& isset($_SESSION['name']) && isset($_SESSION['userStatus']))
+
+if(isset($_SESSION['type'])&&  isset($_SESSION['name']) && isset($_SESSION['userStatus']))
 { 
     $name = $_SESSION['name'];
 	$type = $_SESSION['type'];
 	$id = $_SESSION['id'];
 	$status = $_SESSION['userStatus'];
 	$username = $_SESSION['uname'];
-} 
+	$rate = $_SESSION['rate'];
+	$review = $_SESSION['review'];
+}
 else
 {
 $name=NULL;
@@ -15,6 +18,8 @@ $type=NULL;
 $id=NULL;
 $status="false";
 $username= NULL;
+$rate =  0;
+$review = NULL;
 }
 session_destroy();
 ?>
@@ -44,9 +49,38 @@ session_destroy();
 
 <!-- End CSS Link -->
 <script type="text/javascript" src="..\assets/js/jquery.js"></script>
-<!-- <script type="text/javascript" src="..\assets/js/js/bootstrap.min.js"></script> -->
-<script type="text/javascript" src="..\assets/js/review.js"></script>
+<script type="text/javascript">
+$(function() {    		
+				$('p').html('<span class="starsdisp">'+parseFloat($('input[name=amount]').val())+'</span>');
+				$('span.starsdisp').stars();
+		});
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+}
+</script>
+<style type="text/css">
 
+span.starsdisp, span.starsdisp span {
+    display: block;
+    background: url(../assets/img/icons/stars-p.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.starsdisp span {
+    background-position: 0 0;
+}
+</style>
+<script type="text/javascript" src="..\assets/js/review.js"></script>
  <script>
   $(document).ready(function(){
 
@@ -126,7 +160,7 @@ session_destroy();
 							</li>
 							<li><a href="..\contact.html" id="acontactpd">contact</a></li>
 							<li><a href="..\sign_in.html" id="asignpd">sing in</a></li>
-							<li><a href="#" id="auser"></a></li>
+							<li><a href="#" id="ausern"></a></li>
 
 						</ul>
 					</div>
@@ -151,12 +185,29 @@ session_destroy();
 					<div class="listing-rows">
 						<div class="row">
 							
-								<?php
 								
-                                echo "<div class='property-display clearfix span8'>";
-								echo"<div class='span4 cont-sp'>";
-								echo"<h2>".$name."</h2><br>";
-								echo"<h4>".$type."</h4>";
+                            <div class='property-display clearfix span8'>
+						    <div class='span4 cont-sp'>
+							<h2><i class="icon-stethoscope" style="margin-right:10px"></i><?php echo $name;?></h2>
+							<h4><?php echo $type;?></h4>
+							<br>
+								<h3>Reviews</h3>
+							<input type='hidden' name='amount'  value='<?php echo $rate;?>'/>
+						    <p><span class='starsdisp'></span></p>
+						    <h5><?php echo $rate;?></h5>
+							<h4><?php 
+							if($review == NULL)
+								{
+									echo"<div class='span5'>";
+									echo"No Results found";
+									echo "</div>";
+								}
+							for ($i=0;$i<sizeof($review);$i++)
+							{
+                                echo $review[$i];
+							}
+							?></h4><br><br><br>
+							<?php
 								echo"<div class='well well-small'>";
 								echo"<div class='text-right'>";
 								echo"<a class='btn btn-main' href='#reviews-anchor' id='open-review-box'>Leave a Review</a>";
@@ -178,16 +229,15 @@ session_destroy();
 	                            echo"</div>";
 							    echo"</div>";
 								
-								echo"</div>";
-								echo"</div>"; 
 
 							?>
-					        
+
+					         </div>
+					       </div> 
 					     </div>
 					</div>
 				</div>
 				<div class="span4">
-                 
 				</div>
 			</div>
 		</div>
@@ -249,16 +299,15 @@ $(document).ready(function(){
 		var indexchange = "../index.html";
 		var featchange = "../features.html";
 		var contchange ="../contact.html";
-		$('#auser').text(user);
+		var sign = "../sign_in.html";
+		$('#ausern').text(user);
 		$('#aindexpd').attr("href",index);
 		$('#afeatpd').attr("href",features);
 		$('#acontactpd').attr("href",contact);
 		$('#alogopd').attr("href",index);
 		$('#asignpd').click(function (e){
-		  e.preventDefault();
          $('#asignpd').text("sign in");
-         $('#asignpd').attr("href","#");
-         $('#auser').html(null);
+         $('#ausern').html(null);
          $('#aindexpd').attr("href",indexchange);
 		$('#afeatpd').attr("href",featchange);
 		$('#acontactpd').attr("href",contchange);

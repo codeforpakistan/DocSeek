@@ -30,6 +30,7 @@ session_destroy();
 <!-- Font CSS Link -->
 <!-- Start CSS Link -->
 <link type="text/css" rel="stylesheet" href="..\assets/css/bootstrap.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="..\assets/css/bootstrap-responsive.css">
 <link type="text/css" rel="stylesheet" href="..\assets/css/graha-pink.css">
 <link type="text/css" id="main-style" rel="stylesheet" href="#">
@@ -117,7 +118,7 @@ session_destroy();
                                 
 								echo"<div class='span5'>";
 								echo"<form action='Doctor.php' method='post' style='padding-top:20px'>";
-								echo"<button class='btn btn-large ' type='submit' style='font-size:20px;text-align:left'>".$result[$i]."
+								echo"<button class='btn btn-large ' type='submit' style='font-size:20px;text-align:left'><i class='icon-stethoscope' style='margin-right:10px'></i>".$result[$i]."
 								<p style='font-size:14px'>".$hosp[$i]."</p></button>";
 								echo"<input type='hidden' name='doctor' value='$result[$i]'>";
 								echo"<input type='hidden' name='empid' value='$id[$i]'>";
@@ -196,16 +197,16 @@ $(document).ready(function(){
 		var indexchange = "../index.html";
 		var featchange = "../features.html";
 		var contchange ="../contact.html";
+		var sign = "../sign_in.html";
 		$('#auser').text(user);
 		$('#aindexp').attr("href",index);
 		$('#afeatp').attr("href",features);
 		$('#acontactp').attr("href",contact);
 		$('#alogop').attr("href",index);
 		$('#asignp').click(function (e){
-		  e.preventDefault();
          $('#asignp').text("sign in");
-         $('#asignp').attr("href","#");
          $('#auser').html(null);
+         $('#asignp').attr("href",sign);
          $('#aindexp').attr("href",indexchange);
 		$('#afeatp').attr("href",featchange);
 		$('#acontactp').attr("href",contchange);

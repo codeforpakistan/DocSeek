@@ -29,7 +29,7 @@
 <script type="text/javascript" src="assets/js/jquery.js"></script>
 <script type="text/javascript">
 	var watchId = null;
-    window.onload = geoloc();
+	window.onload = geoloc();
 	function geoloc() {
 
 
@@ -49,19 +49,7 @@ function showPosition(position) {
 		document.getElementById("id1").value=googlePos;
 	}
 </script>
-<script>
-$(document).ready(function(){
 
-    $('#getnotific').click(function (e) {
-      e.preventDefault();
-      $.post("php/notification.php", $("#notific_form").serialize(),function(reply){
-       alert(reply);
-      });
-     return false;
-    });
-    
-  })
-</script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -90,7 +78,7 @@ $(document).ready(function(){
 						<span class="icon-bar"></span>
 						</a>
 						<ul class="nav nav-collapse collapse">
-							<li><a href="index.html" id="aindex">Doc Seek</a>
+							<li><a href="index.html" id="aindex">DocSeek</a>
                             </li>
 							<li><a href="features.html" id="afeatures">features</a>
 							</li>

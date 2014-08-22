@@ -23,10 +23,21 @@ $_SESSION['userStatus']=$u;
         echo $type." ".$row['FullName'];
       }
 
+$rate = 0;
+    $review = array();
+  $raty= mysql_query("SELECT * FROM rating_review WHERE EMP_ID=$id");
+  while($row=mysql_fetch_array($raty))
+  {
+    $rate = $rate + $row['rating'];
+    $review[] = $row['review'];
+  }
+  $rate = ($rate/500)*5;
    $_SESSION['name']=$doc;
    $_SESSION['type']=$type;
    $_SESSION['id']=$id;
    $_SESSION['uname'] = $uname;
+   $_SESSION['rate'] = $rate;
+   $_SESSION['review'] = $review;
    header('location:Doctor_res.php');   
   
 mysql_close($conn);

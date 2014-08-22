@@ -97,11 +97,11 @@ for($i=0;$i<sizeof($var);$i=$i+1)
 {
   if($i>0)
   {
-    $val = $var[0]." ".$var[1];
+    $vale = $var[0]." ".$var[1];
   }
   else
   {
-    $val= $var[$i];
+    $vale= $var[$i];
   }
 }
 $type = array("anaesthetist","biotechnologist","cardiologist","chest specialist","children specialist","dental surgeon","dermatologist","e.n.t specialist","epidemiologist","eye specialist","gynaecologist","medical specialist","microbiologist","neuro surgeon","nutritionist","oral & maxillofacial surgeon",
@@ -110,9 +110,9 @@ $type = array("anaesthetist","biotechnologist","cardiologist","chest specialist"
  for ($x=0;$x<sizeof($type);$x++)
    {
      
-      if ($val==$type[$x])
+      if ($vale==$type[$x])
         { 
-          $doc_type = $val;
+          $doc_type = $vale;
         }
    }
  echo $doc_type;
