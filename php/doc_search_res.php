@@ -98,17 +98,17 @@ session_destroy();
 	<div class="container">
 		<div id="home-content">
 			<div class="row">
-				<div class="span8">
-					<div class="heading-area">
-						<h2>Search Results</h2>
-					</div>
-					<div class="listing-rows">
-						<div class="row">
-						<div class='property-display clearfix span8'>
+				<div class="span10">
+					
+					<div class="span1"></div>
+						<div class='single-wrapper clearfix span10'>
+							<div class="heading-area">
+						          <h2>Search Results</h2>
+					        </div>
 								<?php
 								if ($result==NULL)
 								{
-								echo"<div class='span5'>";
+								echo"<div class='span8'>";
 								echo"<h3>No Results found</h3>";
 								echo "</div>";
 								}
@@ -116,7 +116,7 @@ session_destroy();
 								for ($i=0;$i<sizeof($result);$i=$i+1)
 								{
                                 
-								echo"<div class='span5'>";
+								echo"<div class='span8'>";
 								echo"<form action='Doctor.php' method='post' style='padding-top:20px'>";
 								echo"<button class='btn btn-large ' type='submit' style='font-size:20px;text-align:left'><i class='icon-stethoscope' style='margin-right:10px'></i>".$result[$i]."
 								<p style='font-size:14px'>".$hosp[$i]."</p></button>";
@@ -129,9 +129,6 @@ session_destroy();
 								}
 							}
 						   ?>
-					        
-					     </div>
-                        </div>
 					</div>
 				</div>
 				<div class="span4">

@@ -29,12 +29,14 @@ if(!$sel)
       $latlon2="$lat2".","."$lon2";
       $distance=0;
       $distance= calculate_distance($lat,$lon,$lat2,$lon2);
-      if ($distance < 30){ 
+      if ($distance < 25){ 
         $res[]=$row['Facility_Name'];
+
       }
       else
         continue;
     }
+
 
   function calculate_distance($latfrom,$lonfrom,$latTo,$lonTo)
   {
@@ -128,7 +130,7 @@ $type = array("anaesthetist","biotechnologist","cardiologist","chest specialist"
   { 
     for($i=0;$i<sizeof($res);$i++)
     {
-    $entry = mysql_query("SELECT * from personnel where Type like '%$doc_type%' AND FacilityName like '$res[$i]' ");
+    $entry = mysql_query("SELECT * from personnel where Type like '%$doc_type%' AND FacilityName='$res[$i]' ");
     if(!$entry)
       die("failed to select:".mysql_error());
 
@@ -140,25 +142,25 @@ $type = array("anaesthetist","biotechnologist","cardiologist","chest specialist"
       $result[]=$row['FullName'];
       $hosp[]=$row['PlaceofCurrentPosting'];
       $id[]=$row['EMP_ID'];
-      $nomen[] = $row['Nomenclature'];
       if($row['PlaceofCurrentPosting']== $res[$i])
       {
         $result[]=$row['FullName'];
       $hosp[]=$row['PlaceofCurrentPosting'];
       $id[]=$row['EMP_ID'];
-      $nomen[] = $row['Nomenclature'];
       }
     }
   }
 }
 
+
   }
+
   
   $_SESSION['res']= $result;
   $_SESSION['hosp']=$hosp;
   $_SESSION['id']=$id;
- $_SESSION['nomen'] = $nomen;
  $_SESSION['username']=$user;
+
  header('location:doc_search_res.php');
 mysql_close($conn);
   ?>
